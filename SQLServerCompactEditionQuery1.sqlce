@@ -1,0 +1,94 @@
+---employe table
+create table emp1
+(
+eid nvarchar(20) primary key,
+ename nvarchar(20),
+esal nvarchar(20),
+eadd nvarchar(20)
+);
+--sales table
+create table sales1
+(
+sid nvarchar(20) primary key,
+sname nvarchar(20),
+ssal nvarchar(20),
+sadd nvarchar(20),
+eid nvarchar(20)
+);
+
+
+
+insert into emp1 values(111,'madhu',10000,'banglore');
+insert into emp1 values(222,'radha',20000,'kolar');
+insert into emp1 values(333,'rahul',50000,'vemgal');
+insert into emp1 values(444,'vishnu',70000,'narsapur');
+
+
+insert into sales1 values(001,'manju',80000,'mysore',111);
+insert into sales1 values(002,'suraj',30000,'hassan',222);
+insert into sales1 values(003,'abhi',40000,'mandya',333);
+insert into sales1 values(004,'madappa',60000,'tumkur',444);
+
+
+
+select * from emp1
+
+
+select * from sales1
+
+select * from sales1 
+where eid=444 and sname='madappa';
+
+select * from emp1 where eid=222 or ename='rahul';
+
+select * from sales1 
+where eid=333 or (sname='madappa' and sadd='tumkur'); 
+
+
+update emp1
+set ename='sanju' where ename='vishnu';
+
+alter table sales1 add sbonus nvarchar(20);
+
+alter table sales1  drop column sbonus;
+
+alter table sales1 alter column sadd  nchar(20);
+
+
+
+create table madhu
+(
+mid nvarchar(20),
+mname nvarchar(20),
+madd nvarchar(20)
+);
+
+insert into madhu values(101,'manju','blore');
+insert into madhu values(102,'manu','mlore');
+insert into madhu values(103,'murali','banglore');
+insert into madhu values(104,'mala','banglore');
+insert into madhu values(105,'pallu','zebra');
+
+
+select distinct mid from madhu
+select * from madhu where madd like '%g%';
+
+
+select * from madhu where madd  between 'manju' and 'pallu';
+ 
+delete  madhu where mname='pallu';
+
+update madhu
+set madd='mulbal' where madd='blore';
+
+
+alter table madhu
+add msex nvarchar(20);
+
+delete madhu where msex='NULL';
+
+alter table madhu
+drop column msex;
+
+alter table madhu 
+alter column mname nchar(20);
